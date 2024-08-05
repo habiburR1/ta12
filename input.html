@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Plan Your Route</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+    <link rel="stylesheet" href="input.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Plan Your Route</h1>
+        <div id="start-geocoder" class="geocoder"></div>
+        <div id="end-geocoder" class="geocoder"></div>
+        <div class="button-group">
+            <button onclick="searchRoute()">Search</button>
+            <button onclick="clearFields()">Clear</button>
+        </div>
+    </div>
+    <script src="input.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* Basic reset and styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('https://wallpapers.com/images/high/melbourne-yarra-river-hescua1w728cx012.webp'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    flex-direction: column; /* Center the content vertically */
+}
+
+.content {
+    color: #fff; /* Text color */
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Space buttons left and right */
+    width: 100%;
+    max-width: 600px; /* Max width for the buttons container */
+    padding: 0 2rem; /* Add padding to the sides */
+}
+
+.btn {
+    flex: 1; /* Make buttons take equal space */
+    margin: 0 1rem; /* Space between buttons */
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #007bff; /* Button color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+.btn:active {
+    background-color: #004080; /* Even darker color on click */
+}
+
