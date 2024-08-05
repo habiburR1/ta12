@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body><title>Landing Page</title>
+<body><title>melbcycle</title>
 <link rel="stylesheet" href="styles.css">
 <div class="container">
     <div class="content">
