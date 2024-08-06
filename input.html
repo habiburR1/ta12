@@ -9,49 +9,56 @@
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script> <!-- Add Turf.js -->
     <link rel="stylesheet" href="input.css">
+    <style>
+        .header {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header nav ul li {
+            float: left;
+        }
+
+        .header nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .header nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<!-- header.html -->
-<div class="header">
-    <nav>
-        <ul>
-            <li><a href="homeScreen.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
-</div>
+    <div class="header">
+        <nav>
+            <ul>
+                <li><a href="HomeScreen.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+    </div>
 
-<style>
-.header {
-    background-color: #333;
-    overflow: hidden;
-}
-
-.header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.header nav ul li {
-    float: left;
-}
-
-.header nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.header nav ul li a:hover {
-    background-color: #ddd;
-    color: black;
-}
-</style>
-
-<br>
     <div class="container">
         <h1>Plan Your Route</h1>
         <div id="start-geocoder" class="geocoder"></div>
@@ -62,5 +69,9 @@
         </div>
     </div>
     <script src="input.js"></script>
+
+    <div class="footer">
+        <p>&copy; 2024 CycleMelb. All rights reserved.</p>
+    </div>
 </body>
 </html>
