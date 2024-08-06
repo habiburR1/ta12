@@ -1,177 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>CycleMelb</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-    <link
-            href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
-            rel="stylesheet"
-    />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        h2,
-        h3 {
-            margin: 10px;
-            font-size: 18px;
-        }
-
-        h3 {
-            font-size: 16px;
-        }
-
-        p {
-            margin: 10px;
-        }
-
-        .map-overlay {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: #fff;
-            margin-right: 20px;
-            font-family: Arial, sans-serif;
-            overflow: auto;
-            border-radius: 3px;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-
-        #features {
-            top: 0;
-            height: 100px;
-            margin-top: 20px;
-            width: 250px;
-        }
-
-        #legend {
-            padding: 10px;
-            box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
-            line-height: 18px;
-            height: 150px;
-            margin-bottom: 40px;
-            width: 100px;
-        }
-
-        .legend-key {
-            display: inline-block;
-            border-radius: 20%;
-            width: 10px;
-            height: 10px;
-            margin-right: 5px;
-        }
-    </style>
 </head>
-<body>
-<div id="map"></div>
-<div class="map-overlay" id="features">
-    <h2>Road accident regions</h2>
-    <div id="pd"><p>Accidents over different regions in Melbourne central</p></div>
+<body><title>CycleMelb</title>
+<link rel="stylesheet" href="styles.css">
+<div class="container">
+    <div class="content">
+        <h1>CycleMelb</h1>
+        <div class="button-container">
+            <button id="navigateButton" class="btn">Accident maps</button> <!-- yet to implement feature  -->
+            <button id="navigateButton1" class="btn">View Routes</button>
+        </div>
+    </div>
 </div>
-<div class="map-overlay" id="legend"></div>
-
 <script>
-    // Define access token
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWJiaXNoZWsiLCJhIjoiY2x6Y2trYzY5MGNucTJqcHFnMzVhNnhvcyJ9.ruwp1n7aBJwok0LXQyyRNQ';
-
-    // Create map
-    const map = new mapboxgl.Map({
-        container: 'map', // Container ID
-        style: 'mapbox://styles/abbishek/clzgvtjkr00j301ohe9xdaq8t' // Map style URL from Mapbox Studio
+    document.getElementById('navigateButton').addEventListener('click', function() {
+        window.location.href = 'test.html';
     });
 
-    // Wait for map to load before adjusting it
-    map.on('load', () => {
-        // Make a pointer cursor
-        map.getCanvas().style.cursor = 'default';
-
-        map.fitBounds([
-            [144.9594, -37.8122], // Southwest corner
-            [144.9660, -37.8078]  // Northeast corner
-        ]);
-
-        const layers = [
-            '0-25',
-            '25-100',
-            '100-200',
-            '200-250',
-            '250-350',
-            '350-450',
-            '450+'
-        ];
-        const colors = [
-            '#FFEDA0',
-            '#FED976',
-            '#FEB24C',
-            '#FD8D3C',
-            '#FC4E2A',
-            '#E31A1C',
-            '#800026'
-        ];
-
-        // Add source and layer for regions data
-        map.addSource('regions', {
-            'type': 'geojson',
-            'data': 'data/pincodes_with_accident_counts.geojson'
-        });
-
-        map.addLayer({
-            'id': 'regiondata',
-            'type': 'fill',
-            'source': 'regions',
-            'layout': {},
-            'paint': {
-                'fill-color': [
-                    'step',
-                    ['get', 'accident_count'],
-                    '#FFEDA0', 25,
-                    '#FED976', 100,
-                    '#FEB24C', 200,
-                    '#FD8D3C', 250,
-                    '#FC4E2A', 350,
-                    '#E31A1C', 450,
-                    '#800026'
-                ],
-                'fill-opacity': 0.6
-            }
-        });
-
-        // Create legend
-        const legend = document.getElementById('legend');
-
-        layers.forEach((layer, i) => {
-            const color = colors[i];
-            const item = document.createElement('div');
-            const key = document.createElement('span');
-            key.className = 'legend-key';
-            key.style.backgroundColor = color;
-
-            const value = document.createElement('span');
-            value.innerHTML = `${layer}`;
-            item.appendChild(key);
-            item.appendChild(value);
-            legend.appendChild(item);
-        });
-
-        // Change info window on hover
-        map.on('mousemove', (event) => {
-            const regions = map.queryRenderedFeatures(event.point, {
-                layers: ['regiondata']
-            });
-            document.getElementById('pd').innerHTML = regions.length
-                ? `<h3>Region ID: ${regions[0].properties.mccid_int}</h3><p><strong><em>${regions[0].properties.accident_count}</strong> accidents</em></p>`
-                : `<p>Hover over a region!</p>`;
-        });
+    document.getElementById('navigateButton1').addEventListener('click', function() {
+        window.location.href = 'input.html';
     });
 </script>
 </body>
