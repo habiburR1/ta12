@@ -1,2 +1,12 @@
-body { margin: 1; padding: 1; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body { 
+    margin: 0; 
+    padding: 0;
+    padding-top: 60px; /* Ensure the map doesn't overlap with the fixed header */
+}
+
+#map { 
+    position: absolute; 
+    top: 60px; /* Adjust top position to be below the header */
+    bottom: 0; 
+    width: 100%; 
+}

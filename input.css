@@ -10,9 +10,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
+    padding-top: 60px; /* Add this line to create space for the fixed header */
 }
-
-
 
 .container {
     text-align: center;
@@ -58,4 +57,39 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.header {
+    width: 100%;
+    background-color: #060232;
+    color: white;
+    text-align: left;
+    padding: 10px 0;
+    position: fixed; /* Add this line to fix the header at the top */
+    top: 0; /* Add this line to position the header at the top */
+    left: 0; /* Add this line to ensure the header spans the full width */
+}
+
+.header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.header nav ul li {
+    display: inline;
+}
+
+.header nav ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header nav ul li a:hover {
+    background-color: #ddd;
+    color: black;
 }
