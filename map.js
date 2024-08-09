@@ -27,6 +27,28 @@ function getQueryParams() {
     return params;
 }
 
+// Retry fetch function
+function retryFetch(url, options, retries = 3, delay = 1000) {
+    return new Promise((resolve, reject) => {
+        const fetchAttempt = (attempt) => {
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) throw new Error('Fetch failed');
+                    return response.json();
+                })
+                .then(data => resolve(data))
+                .catch(error => {
+                    if (attempt < retries) {
+                        setTimeout(() => fetchAttempt(attempt + 1), delay);
+                    } else {
+                        reject(error);
+                    }
+                });
+        };
+        fetchAttempt(0);
+    });
+}
+
 // Get start and end locations from query parameters
 const params = getQueryParams();
 const startId = params.startId;
@@ -36,25 +58,25 @@ const endText = params.endText;
 
 if (startId && endId) {
     // Fetch the location details from the IDs
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${startId}.json?access_token=${mapboxgl.accessToken}`)
-        .then(response => response.json())
+    retryFetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${startId}.json?access_token=${mapboxgl.accessToken}`)
         .then(data => {
             const startLocation = data.features[0].center;
             directions.setOrigin(startLocation);
             setTimeout(() => {
                 document.querySelector('.mapbox-directions-origin input').value = startText;
             }, 500); // Delay to ensure the input field is available
-        });
+        })
+        .catch(error => console.error('Error fetching start location:', error));
 
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${endId}.json?access_token=${mapboxgl.accessToken}`)
-        .then(response => response.json())
+    retryFetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${endId}.json?access_token=${mapboxgl.accessToken}`)
         .then(data => {
             const endLocation = data.features[0].center;
             directions.setDestination(endLocation);
             setTimeout(() => {
                 document.querySelector('.mapbox-directions-destination input').value = endText;
             }, 500); // Delay to ensure the input field is available
-        });
+        })
+        .catch(error => console.error('Error fetching end location:', error));
 } else {
     alert('Start or End location is missing.');
 }

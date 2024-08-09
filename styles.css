@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-    background-image: url('https://wallpapers.com/images/high/melbourne-yarra-river-hescua1w728cx012.webp'); /* Replace with your background image URL */
+    background-image: url('index-screen3.jpg'); /* Replace with your background image URL */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,33 +24,42 @@ body {
 }
 
 .content {
-    color: #fff; /* Text color */
+    text-align:center;
+    padding: 7.5rem 0;
+    color: #333; /* Text color */
+    
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 2rem;
+    color: #333;
+    /* text-shadow: 5px 5px 8px #fff;  */
+    -webkit-text-stroke: 1px yellow;
+    text-shadow: 3px 3px 4px rgba(0,0,0,0.6), -1px -1px 2px rgba(255,255,255,0.5); 
 }
 
 .button-container {
     display: flex;
     justify-content: space-between; /* Space buttons left and right */
     width: 100%;
-    max-width: 600px; /* Max width for the buttons container */
-    padding: 0 2rem; /* Add padding to the sides */
+    max-width: 600px; 
+    /* padding: 0 2rem; Add padding to the sides */
 }
 
 .btn {
     flex: 1; /* Make buttons take equal space */
     margin: 0 1rem; /* Space between buttons */
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
     color: #fff;
     background-color: #007bff; /* Button color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    outline: 2px solid #333; 
+    outline-offset: -2px; 
 }
 
 .btn:hover {

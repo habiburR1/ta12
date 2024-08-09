@@ -10,3 +10,7 @@ body {
     bottom: 0; 
     width: 100%; 
 }
+
+.header {
+    font-family: Arial, sans-serif; /* Added font-family property */
+}
